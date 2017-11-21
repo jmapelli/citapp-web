@@ -27,7 +27,7 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="form-panel">
-                        <form class="form-horizontal" action="crear" method="post">
+                        <form class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Nro. documento</label>
                                 <div class=" col-sm-10">
@@ -36,7 +36,7 @@
                                                class="form-control col-sm-10" value="<%=nroDocumento%>"
                                                placeholder="Nro. documento">
                                         <span class="input-group-btn">
-                                            <button id="buscar" class="btn btn-default" type="button">
+                                            <button id="buscar" class="btn btn-primary" type="button">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>

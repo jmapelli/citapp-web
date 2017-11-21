@@ -32,7 +32,7 @@
                         <a href="<%=request.getContextPath()%>/cita/reservar">Reservar cita</a>
                     </li>
                     <li>
-                        <a href="#">Buscar cita</a>
+                        <a href="<%=request.getContextPath()%>/cita/buscar">Buscar cita</a>
                     </li>
                 </ul>
             </li>

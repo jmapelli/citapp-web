@@ -36,7 +36,7 @@ public class CitaReservarServlet extends HttpServlet {
             Error.handler(request, e);
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/template/cita/crear_reserva_result.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/template/cita/reserva_cita_result.jsp");
         rd.forward(request, response);
     }
 
@@ -60,7 +60,7 @@ public class CitaReservarServlet extends HttpServlet {
     }
 
     public void doGetResevar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/template/cita/reservar.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/template/cita/reservar_cita.jsp");
         rd.forward(request, response);
     }
 

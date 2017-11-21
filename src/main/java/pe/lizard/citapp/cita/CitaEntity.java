@@ -20,6 +20,9 @@ public class CitaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String codigo;
+
     @ManyToOne(targetEntity = UsuarioEntity.class)
     @JoinColumn(name = "PACIENTE", nullable = false)
     private UsuarioEntity paciente;
@@ -38,5 +41,10 @@ public class CitaEntity {
 
     @Column(nullable = false)
     private int estado;
+
+    @PrePersist
+    private void prePersist() {
+        this.codigo = "C" + new Date().getTime();
+    }
 
 }

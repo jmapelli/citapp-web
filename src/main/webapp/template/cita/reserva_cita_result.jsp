@@ -31,6 +31,11 @@
                 <table class="table table-striped table-advance table-hover" style="margin-bottom: 0;">
                     <tbody>
                     <tr>
+                        <td style="text-align: left"><b>Código:</b></td>
+                        <td style="text-align: right"><%=cita.getCodigo()%>
+                        </td>
+                    </tr>
+                    <tr>
                         <td style="text-align: left"><b>Paciente:</b></td>
                         <td style="text-align: right"><%=cita.getPaciente().getNombres() + " " + cita.getPaciente().getApellidos()%>
                         </td>

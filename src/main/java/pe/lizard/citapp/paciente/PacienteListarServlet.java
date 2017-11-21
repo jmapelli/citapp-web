@@ -18,7 +18,7 @@ public class PacienteListarServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pacientes", new UsuarioService().findPacientes());
-        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/listar.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/listar_pacientes.jsp");
         rd.forward(request, response);
     }
 }

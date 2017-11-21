@@ -39,7 +39,7 @@ public class PacienteCrearServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/crear.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/crear_paciente.jsp");
         rd.forward(request, response);
     }
 }
