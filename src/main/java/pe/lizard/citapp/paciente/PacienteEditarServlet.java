@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "PacienteListarServlet", urlPatterns = "/paciente")
-public class PacienteListarServlet extends HttpServlet {
+@WebServlet(name = "PacienteEditarServlet", urlPatterns = "/paciente/editar")
+public class PacienteEditarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pacientes", new UsuarioService().findPacientes());
-        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/listar_pacientes.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/editar_pacientes.jsp");
         rd.forward(request, response);
     }
 }
