@@ -2345,3 +2345,7 @@ label {
 .backstretch {
     opacity: .05;
 }
+
+.label-mini {
+    padding: .2em .6em .0em !important;
+}

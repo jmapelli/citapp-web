@@ -1,5 +1,8 @@
 package pe.lizard.citapp.cita;
 
+import pe.lizard.citapp.usuario.UsuarioEntity;
+import pe.lizard.citapp.util.Error;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,11 +46,31 @@ public class CitaBuscarServlet extends HttpServlet {
     }
 
     private void doGetFindByReserva(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CitaService cs = new CitaService();
+        String codigo = request.getParameter("valor");
+        UsuarioEntity doctor = (UsuarioEntity) request.getSession().getAttribute("usuario");
+
+        try {
+            request.setAttribute("citas", cs.findByCodigo(codigo, doctor.getId()));
+        } catch (Exception e) {
+            Error.handler(request, e);
+        }
+
         RequestDispatcher rd = request.getRequestDispatcher("/template/cita/buscar_citas_result.jsp");
         rd.forward(request, response);
     }
 
     private void doGetFindByPaciente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CitaService cs = new CitaService();
+        String nroDocumento = request.getParameter("valor");
+        UsuarioEntity doctor = (UsuarioEntity) request.getSession().getAttribute("usuario");
+
+        try {
+            request.setAttribute("citas", cs.findByNroDocumento(nroDocumento, doctor.getId()));
+        } catch (Exception e) {
+            Error.handler(request, e);
+        }
+
         RequestDispatcher rd = request.getRequestDispatcher("/template/cita/buscar_citas_result.jsp");
         rd.forward(request, response);
     }

@@ -6,6 +6,8 @@ import pe.lizard.citapp.usuario.UsuarioEntity;
 import pe.lizard.citapp.usuario.UsuarioService;
 import pe.lizard.citapp.util.DateUtil;
 
+import java.util.List;
+
 public class CitaService {
 
     public static final int CITA_RESERVADA = 1;
@@ -21,7 +23,7 @@ public class CitaService {
         hs = new HorarioService();
         cr = new CitaRepository();
 
-        this.validarReservaRequest(nroDocumento, fecha, idHorario);
+        this.validarReservarRequest(nroDocumento, fecha, idHorario);
 
         UsuarioEntity paciente = us.findByNroDocumento(nroDocumento);
         HorarioEntity horario = hs.findById(Long.parseLong(idHorario));
@@ -40,7 +42,28 @@ public class CitaService {
         return cr.crear(cita);
     }
 
-    private void validarReservaRequest(String nroDocumento, String fecha, String idHorario) throws Exception {
+    public List<CitaEntity> findByNroDocumento(String nroDocumento, Long idDoctor) throws Exception {
+        this.validarParametroBusqueda(nroDocumento);
+
+        cr = new CitaRepository();
+        return cr.findByNroDocumento(nroDocumento, idDoctor);
+    }
+
+    public List<CitaEntity> findByCodigo(String codigo, Long idDoctor) throws Exception {
+        this.validarParametroBusqueda(codigo);
+
+        cr = new CitaRepository();
+        return cr.findByCodigo(codigo, idDoctor);
+    }
+
+    private void validarParametroBusqueda(String valor) throws Exception {
+        if (valor == null || valor.isEmpty()) {
+            throw new Exception("El parametro de busca es invalido");
+        }
+    }
+
+
+    private void validarReservarRequest(String nroDocumento, String fecha, String idHorario) throws Exception {
         if (nroDocumento == null || nroDocumento.isEmpty()) {
             throw new Exception("El nro. de documento es invalido");
         }

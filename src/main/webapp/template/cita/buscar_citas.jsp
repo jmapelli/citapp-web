@@ -54,6 +54,8 @@
                                     <th>Nombres y apellidos</th>
                                     <th>Fecha cita</th>
                                     <th>Horario</th>
+                                    <th>Estado</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="buscar_citas_result">
