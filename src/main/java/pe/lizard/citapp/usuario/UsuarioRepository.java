@@ -35,7 +35,7 @@ public class UsuarioRepository {
             em = Connection.getInstance();
 
             em.getTransaction().begin();
-//            em.persist(entity);
+            em.persist(entity);
             em.getTransaction().commit();
         } catch (Exception e) {
             LOG.warning(e.getLocalizedMessage());

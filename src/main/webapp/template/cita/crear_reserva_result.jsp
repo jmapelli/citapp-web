@@ -25,10 +25,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" style="text-align: center">Cita reservada</h4>
+                <h4 class="modal-title">Cita reservada</h4>
             </div>
             <div class="modal-body" style="text-align: center;">
-
                 <table class="table table-striped table-advance table-hover" style="margin-bottom: 0;">
                     <tbody>
                     <tr>

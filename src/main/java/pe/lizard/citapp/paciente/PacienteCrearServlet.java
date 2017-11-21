@@ -14,29 +14,27 @@ import java.io.IOException;
 
 @WebServlet(name = "PacienteCrearServlet", urlPatterns = "/paciente/crear")
 public class PacienteCrearServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = null;
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nombres = request.getParameter("nombres");
         String apellidos = request.getParameter("apellidos");
         String correo = request.getParameter("correo");
         String nroDocumento = request.getParameter("nroDocumento");
 
-        UsuarioEntity ue = new UsuarioEntity();
-        ue.setNombres(nombres);
-        ue.setApellidos(apellidos);
-        ue.setCorreo(correo);
-        ue.setNroDocumento(nroDocumento);
-
         try {
+            UsuarioEntity ue = new UsuarioEntity();
+            ue.setNombres(nombres);
+            ue.setApellidos(apellidos);
+            ue.setCorreo(correo);
+            ue.setNroDocumento(nroDocumento);
+
             ue = new UsuarioService().crearPaciente(ue);
-            request.setAttribute("usuario", ue);
-            rd = request.getRequestDispatcher("/template/paciente/crear.jsp");
+            request.setAttribute("paciente", ue);
         } catch (Exception e) {
             Error.handler(request, e);
-            rd = request.getRequestDispatcher("/template/paciente/crear.jsp");
         }
 
+        RequestDispatcher rd = request.getRequestDispatcher("/template/paciente/crear_paciente_result.jsp");
         rd.forward(request, response);
     }
 

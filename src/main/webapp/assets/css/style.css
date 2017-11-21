@@ -2338,4 +2338,6 @@ label {
     min-height: 900px;
 }
 
-
+.modal-header {
+    text-align: center;
+}
