@@ -1,24 +1,32 @@
 package pe.lizard.citapp.usuario;
 
+import java.util.List;
+
 public class UsuarioService {
 
     UsuarioRepository us;
 
-    private UsuarioEntity crearUsuario(UsuarioEntity entity) throws Exception {
-        this.validarCorreo(entity.getCorreo());
+    public UsuarioEntity findById(Long id) {
+        return us.findById(id);
+    }
 
+    public List<UsuarioEntity> findPacientes() {
         us = new UsuarioRepository();
-        return us.crear(entity);
+        return us.findUsuarios(UsuarioEntity.PACIENTE);
     }
 
     public UsuarioEntity crearDoctor(UsuarioEntity entity) throws Exception {
+        this.validarNombresApellidos(entity.getNombres(), entity.getApellidos());
         this.validarUsuario(entity.getUsuario());
+        this.validarCorreo(entity.getCorreo());
 
         entity.setRol(UsuarioEntity.DOCTOR);
         return this.crearUsuario(entity);
     }
 
     public UsuarioEntity crearPaciente(UsuarioEntity entity) throws Exception {
+        this.validarNombresApellidos(entity.getNombres(), entity.getApellidos());
+        this.validarCorreo(entity.getCorreo());
         this.validarNroDocumento(entity.getNroDocumento());
 
         entity.setRol(UsuarioEntity.PACIENTE);
@@ -38,6 +46,22 @@ public class UsuarioService {
     public UsuarioEntity findByNroDocumento(String nroDocumento) {
         us = new UsuarioRepository();
         return us.findByNroDocumento(nroDocumento);
+    }
+
+    private UsuarioEntity crearUsuario(UsuarioEntity entity) throws Exception {
+        us = new UsuarioRepository();
+        return us.crear(entity);
+    }
+
+
+    private void validarNombresApellidos(String nombres, String apellidos) throws Exception {
+        if (nombres == null || nombres.isEmpty()) {
+            throw new Exception("Los nombres son invalido");
+        }
+
+        if (apellidos == null || apellidos.isEmpty()) {
+            throw new Exception("Los apellidos son invalido");
+        }
     }
 
     private void validarCorreo(String correo) throws Exception {

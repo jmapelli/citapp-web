@@ -7,6 +7,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String usuario = "";
+    if (request.getParameter("usuario") != null) {
+        usuario = request.getParameter("usuario");
+    }
+%>
+
 <%@ include file="../common/header.jsp" %>
 <div id="login-page">
     <div class="container">
@@ -14,7 +21,8 @@
         <form action="auth" method="post" class="form-login">
             <h2 class="form-login-heading">Iniciar sesión</h2>
             <div class="login-wrap">
-                <input name="usuario" type="text" class="form-control" placeholder="Usuario" autofocus><br>
+                <input name="usuario" type="text" class="form-control" placeholder="Usuario" value="<%=usuario%>"
+                       autofocus><br>
                 <input name="clave" type="password" class="form-control" placeholder="Contraseña"><br>
                 <button class="btn btn-theme btn-block" type="submit">
                     <i class="fa fa-lock"></i> Iniciar sesión
@@ -46,9 +54,9 @@
 </div>
 <%@ include file="../common/footer.jsp" %>
 
-<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+<script src="<%=request.getContextPath()%>/assets/js/jquery.backstretch.min.js"></script>
 <script>
-    $.backstretch("assets/img/auth_background.jpg", {
+    $.backstretch("<%=request.getContextPath()%>/assets/img/auth_background.jpg", {
         speed: 500
     });
 </script>

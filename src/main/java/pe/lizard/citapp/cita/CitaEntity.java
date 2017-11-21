@@ -37,6 +37,6 @@ public class CitaEntity {
     private Date fecha;
 
     @Column(nullable = false)
-    private String estado;
+    private int estado;
 
 }

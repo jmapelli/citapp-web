@@ -19,11 +19,12 @@ public class SessionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        String redirect = request.getRequestURI();
-        Pattern pat = Pattern.compile("/(?!auth)");
-        Matcher mat = pat.matcher(redirect.substring(request.getContextPath().length()));
+        String path = request.getRequestURI();
+        path = path.substring(request.getContextPath().length());
+        Pattern pattern = Pattern.compile("/auth.*||/assets.*");
+        Matcher match = pattern.matcher(path);
 
-        if (request.getSession().getAttribute("authenticated") == null && mat.matches()) {
+        if (request.getSession().getAttribute("authenticated") == null && !match.matches()) {
             response.sendRedirect(request.getContextPath() + "/auth");
         } else {
             chain.doFilter(req, resp);

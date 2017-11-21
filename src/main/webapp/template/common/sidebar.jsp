@@ -23,7 +23,35 @@
             </h5>
             <span style="color: #fff; display: block; font-size: 10px; text-align: center"><%=ue.getCorreo()%></span>
 
-            <li class="mt">
+            <li class="mt sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-calendar"></i> <span>Citas</span>
+                </a>
+                <ul class="sub">
+                    <li>
+                        <a href="<%=request.getContextPath()%>/cita/reservar">Reservar cita</a>
+                    </li>
+                    <li>
+                        <a href="#">Buscar cita</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="javascript:;">
+                    <i class="fa fa-users"></i> <span>Pacientes</span>
+                </a>
+                <ul class="sub">
+                    <li>
+                        <a href="<%=request.getContextPath()%>/paciente">Listar pacientes</a>
+                    </li>
+                    <li>
+                        <a href="<%=request.getContextPath()%>/paciente/crear">Crear paciente</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
                 <a href="<%=request.getContextPath()%>/auth?action=<%=AuthLoginServlet.ACTION_LOGOUT%>">
                     <i class="fa fa-sign-out"></i>
                     <span>Cerrar sesión</span>
