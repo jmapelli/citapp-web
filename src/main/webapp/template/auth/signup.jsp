@@ -11,7 +11,7 @@
 <div id="login-page">
     <div class="container">
 
-        <form action="signup" method="post" class="form-login">
+        <form action="signup" method="post" class="form-login" style="box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);">
             <h2 class="form-login-heading">Registrar usuario</h2>
             <div class="login-wrap">
                 <input name="usuario" type="text" class="form-control" placeholder="Usuario" autofocus><br>
@@ -19,9 +19,16 @@
                 <input name="nombres" type="text" class="form-control" placeholder="Nombres"><br>
                 <input name="apellidos" type="text" class="form-control" placeholder="Apellidos"><br>
                 <input name="correo" type="email" class="form-control" placeholder="Correo electrónico"><br>
-                <button class="btn btn-theme btn-block" type="submit">
+                <button class="btn btn-primary btn-block" type="submit">
                     <i class="fa fa-lock"></i> Registrar
                 </button>
+                <hr style="border-top: 1px solid #eee ">
+                <div class="registration">
+                    Ya tiene una cuenta?<br>
+                    <a class="" href="<%=request.getContextPath()%>/auth">
+                        Inicia sesión
+                    </a>
+                </div>
                 <%
                     if (request.getAttribute("error_status") != null
                             && request.getAttribute("error_status").equals(Error.ERROR_STATUS_OK)) {
@@ -41,10 +48,3 @@
     </div>
 </div>
 <%@ include file="../common/footer.jsp" %>
-
-<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/jquery.backstretch.min.js"></script>
-<script>
-    $.backstretch("<%=request.getContextPath()%>/assets/img/auth_background.jpg", {
-        speed: 500
-    });
-</script>

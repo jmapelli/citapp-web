@@ -2341,3 +2341,7 @@ label {
 .modal-header {
     text-align: center;
 }
+
+.backstretch {
+    opacity: .05;
+}

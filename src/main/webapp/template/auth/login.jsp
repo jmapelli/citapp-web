@@ -18,16 +18,19 @@
 <div id="login-page">
     <div class="container">
 
-        <form action="auth" method="post" class="form-login">
+        <form action="auth" method="post" class="form-login" style="box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);">
             <h2 class="form-login-heading">Iniciar sesión</h2>
+            <div style="text-align: center; margin-top: 20px;">
+                <img style="width: 60%;" src="<%=request.getContextPath()%>/assets/img/citapp.jpg"/>
+            </div>
             <div class="login-wrap">
                 <input name="usuario" type="text" class="form-control" placeholder="Usuario" value="<%=usuario%>"
                        autofocus><br>
                 <input name="clave" type="password" class="form-control" placeholder="Contraseña"><br>
-                <button class="btn btn-theme btn-block" type="submit">
+                <button class="btn btn-primary btn-block" type="submit">
                     <i class="fa fa-lock"></i> Iniciar sesión
                 </button>
-                <hr>
+                <hr style="border-top: 1px solid #eee ">
                 <div class="registration">
                     Aún no tienes una cuenta?<br>
                     <a class="" href="<%=request.getContextPath()%>/auth/signup">
@@ -53,10 +56,3 @@
     </div>
 </div>
 <%@ include file="../common/footer.jsp" %>
-
-<script src="<%=request.getContextPath()%>/assets/js/jquery.backstretch.min.js"></script>
-<script>
-    $.backstretch("<%=request.getContextPath()%>/assets/img/auth_background.jpg", {
-        speed: 500
-    });
-</script>

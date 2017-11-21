@@ -15,5 +15,12 @@
 <script
         src="<%=request.getContextPath()%>/assets/js/jquery.nicescroll.js"></script>
 <script src="<%=request.getContextPath()%>/assets/js/common-scripts.js"></script>
+
+<script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/jquery.backstretch.min.js"></script>
+<script>
+    $.backstretch("<%=request.getContextPath()%>/assets/img/auth_background.jpg", {
+        speed: 500
+    });
+</script>
 </body>
 </html>
