@@ -42,9 +42,9 @@
                     <i class="fa fa-users"></i> <span>Pacientes</span>
                 </a>
                 <ul class="sub">
-                    <li>
-                        <a href="<%=request.getContextPath()%>/paciente">Listar pacientes</a>
-                    </li>
+                    <%--<li>--%>
+                        <%--<a href="<%=request.getContextPath()%>/paciente">Listar pacientes</a>--%>
+                    <%--</li>--%>
                     <li>
                         <a href="<%=request.getContextPath()%>/paciente/crear">Crear paciente</a>
                     </li>

@@ -11,7 +11,7 @@
     <%@ include file="./template/common/nav.jsp" %>
     <%@ include file="./template/common/sidebar.jsp" %>
 
-    <section id="main-content" style="margin: 0">
+    <section id="main-content">
         <section class="wrapper">
             hola
         </section>
