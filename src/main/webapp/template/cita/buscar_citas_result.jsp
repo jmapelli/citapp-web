@@ -1,7 +1,9 @@
 <%@ page import="pe.lizard.citapp.cita.CitaEntity" %>
 <%@ page import="java.util.List" %>
 <%@ page import="pe.lizard.citapp.util.DateUtil" %>
-<%@ page import="pe.lizard.citapp.cita.CitaService" %><%--
+<%@ page import="pe.lizard.citapp.cita.CitaService" %>
+<%@ page import="pe.lizard.citapp.cita.CitaListarServlet" %>
+<%@ page import="pe.lizard.citapp.cita.CitaBuscarServlet" %><%--
   Created by IntelliJ IDEA.
   User: JosueAngel
   Date: 21/11/2017
@@ -58,9 +60,11 @@
         %>
     </td>
     <td>
-        <% String disabled = cita.getEstado() != CitaService.CITA_RESERVADA ? "disabled" : ""; %>
-        <button class="btn btn-danger btn-xs" <%=disabled%>>
-            <i class="fa fa-ban"></i></button>
+        <% if (cita.getEstado() == CitaService.CITA_RESERVADA) {%>
+        <button class="btn btn-danger btn-xs cancelar" data-cita="<%=cita.getId()%>">
+            <i class="fa fa-ban"></i>
+        </button>
+        <% } %>
     </td>
 </tr>
 <%
@@ -73,4 +77,18 @@
 </tr>
 <% }%>
 
-
+<script>
+    $(function () {
+        $('.cancelar').click(function () {
+            $.get('buscar', {
+                    action: $('#action').val(),
+                    valor: $('#valor').val(),
+                    cita: $(this).data('cita'),
+                    estado: <%=CitaService.CITA_CANCELADA%>
+                }, function (response) {
+                    $('#buscar_citas_result').html(response);
+                }
+            );
+        });
+    });
+</script>

@@ -13,8 +13,14 @@
 
     <section id="main-content">
         <section class="wrapper">
-            hola
+
         </section>
     </section>
 </section>
 <%@ include file="./template/common/footer.jsp" %>
+
+<script>
+    $(function () {
+        document.location.href = '<%=request.getContextPath()%>/cita/listar';
+    });
+</script>

@@ -1,7 +1,9 @@
 package pe.lizard.citapp.cita;
 
 import pe.lizard.citapp.usuario.UsuarioEntity;
+import pe.lizard.citapp.util.DateUtil;
 import pe.lizard.citapp.util.Error;
+import pe.lizard.citapp.util.IntegerUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet(name = "CitaBuscarServlet", urlPatterns = "/cita/buscar")
 public class CitaBuscarServlet extends HttpServlet {
@@ -49,8 +52,19 @@ public class CitaBuscarServlet extends HttpServlet {
         CitaService cs = new CitaService();
         String codigo = request.getParameter("valor");
         UsuarioEntity doctor = (UsuarioEntity) request.getSession().getAttribute("usuario");
+        String cita = request.getParameter("cita");
+        Integer estado = IntegerUtil.toInteger(request.getParameter("estado"));
+
+        Long idCita = null;
+        if (cita != null && !cita.isEmpty()) {
+            idCita = Long.parseLong(cita);
+        }
 
         try {
+            if (idCita != null) {
+                cs.cambiarEstado(estado, idCita);
+            }
+
             request.setAttribute("citas", cs.findByCodigo(codigo, doctor.getId()));
         } catch (Exception e) {
             Error.handler(request, e);
@@ -64,8 +78,19 @@ public class CitaBuscarServlet extends HttpServlet {
         CitaService cs = new CitaService();
         String nroDocumento = request.getParameter("valor");
         UsuarioEntity doctor = (UsuarioEntity) request.getSession().getAttribute("usuario");
+        String cita = request.getParameter("cita");
+        Integer estado = IntegerUtil.toInteger(request.getParameter("estado"));
+
+        Long idCita = null;
+        if (cita != null && !cita.isEmpty()) {
+            idCita = Long.parseLong(cita);
+        }
 
         try {
+            if (idCita != null) {
+                cs.cambiarEstado(estado, idCita);
+            }
+
             request.setAttribute("citas", cs.findByNroDocumento(nroDocumento, doctor.getId()));
         } catch (Exception e) {
             Error.handler(request, e);

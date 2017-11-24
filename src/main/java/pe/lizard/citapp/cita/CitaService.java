@@ -42,6 +42,18 @@ public class CitaService {
         return cr.crear(cita);
     }
 
+    public CitaEntity cambiarEstado(int estado, Long cita) {
+        cr = new CitaRepository();
+        return cr.cambiarEStado(estado, cita);
+    }
+
+    public List<CitaEntity> findByFecha(String fecha, Long idDoctor) throws Exception {
+        this.validarParametroBusqueda(fecha);
+
+        cr = new CitaRepository();
+        return cr.findByFecha(DateUtil.toDate("yyyy-MM-dd", fecha), idDoctor);
+    }
+
     public List<CitaEntity> findByNroDocumento(String nroDocumento, Long idDoctor) throws Exception {
         this.validarParametroBusqueda(nroDocumento);
 
@@ -61,7 +73,6 @@ public class CitaService {
             throw new Exception("El parametro de busca es invalido");
         }
     }
-
 
     private void validarReservarRequest(String nroDocumento, String fecha, String idHorario) throws Exception {
         if (nroDocumento == null || nroDocumento.isEmpty()) {
